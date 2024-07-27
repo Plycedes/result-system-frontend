@@ -1,11 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React from "react";
+import { Header } from "./components";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
     return (
         <>
-            <h1 className="text-3xl text-red-300">Abhay</h1>
+            <Header />
+            <Outlet />
         </>
     );
 }

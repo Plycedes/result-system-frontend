@@ -8,12 +8,13 @@ import {
     RouterProvider,
     Route,
 } from "react-router-dom";
-import { Result } from "./components/index.js";
+import { Result, Admin } from "./components/index.js";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
             <Route path="" element={<Result />} />
+            <Route path="admin" element={<Admin />} />
         </Route>
     )
 );

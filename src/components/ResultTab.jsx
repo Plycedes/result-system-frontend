@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function ResultTab() {
     const { rollno, mobileno } = useParams();
@@ -8,7 +9,30 @@ function ResultTab() {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {}, []);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const controller = new AbortController();
+        (async () => {
+            try {
+                setError(false);
+                setLoading(true);
+                const response = await axios.post("/api/v1/result/getresult", {
+                    rollno: rollno,
+                    mobileno: mobileno,
+                });
+                setResult(response.data.data);
+                setLoading(false);
+            } catch (error) {
+                if (axios.isCancel(error)) {
+                    return;
+                }
+                setError(true);
+                console.log(error);
+                setLoading(false);
+            }
+        })();
+    }, []);
     return (
         <div>
             {loading && <h1 className="text-5xl">Loading...</h1>}
@@ -16,71 +40,113 @@ function ResultTab() {
 
             {!loading && !error && (
                 <div className="m-5 p-5">
+                    <div className="mb-5">
+                        <h2 className="text-3xl text-blue-500">Student Result</h2>
+                    </div>
                     <div class="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
                         <table class="w-full text-left table-auto min-w-max">
                             <tbody>
                                 <tr>
-                                    <td class="p-4 border-b border-blue-gray-50">
+                                    <td class="p-4 border-b border-r border-blue-gray-50 bg-blue-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            John Michael
+                                            Name
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-blue-gray-50">
+                                    <td class="p-4 border-b border-blue-gray-50 bg-blue-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Manager
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Alexa Liras
-                                        </p>
-                                    </td>
-                                    <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Developer
+                                            {result.name}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-b border-blue-gray-50">
+                                    <td class="p-4 border-b border-r border-blue-gray-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Laurent Perrier
+                                            Math
                                         </p>
                                     </td>
                                     <td class="p-4 border-b border-blue-gray-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Executive
+                                            {result.math}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-b border-blue-gray-50">
+                                    <td class="p-4 border-b border-r border-blue-gray-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Michael Levi
+                                            Physics
                                         </p>
                                     </td>
                                     <td class="p-4 border-b border-blue-gray-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Developer
+                                            {result.physics}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4">
+                                    <td class="p-4 border-b border-r border-blue-gray-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Richard Gran
+                                            Chemistry
                                         </p>
                                     </td>
-                                    <td class="p-4">
+                                    <td class="p-4 border-b border-blue-gray-50">
                                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                            Manager
+                                            {result.chemistry}
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border-b border-r border-blue-gray-50">
+                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                            English
+                                        </p>
+                                    </td>
+                                    <td class="p-4 border-b border-blue-gray-50">
+                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                            {result.english}
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border-b border-r border-blue-gray-50">
+                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                            Biology
+                                        </p>
+                                    </td>
+                                    <td class="p-4 border-b border-blue-gray-50">
+                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                            {result.biology}
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border-r">
+                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                            Total
+                                        </p>
+                                    </td>
+                                    <td class="p-4 ">
+                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                            {result.math +
+                                                result.physics +
+                                                result.chemistry +
+                                                result.english +
+                                                result.biology}
                                         </p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div className="flex justify-center mt-5">
+                        <button
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button"
+                            onClick={() => {
+                                navigate(-1);
+                            }}
+                        >
+                            Back
+                        </button>
                     </div>
                 </div>
             )}

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Result() {
+    const [rollno, setRollno] = useState("");
+    const [mobileno, setMobileno] = useState("");
     return (
         <div className="h-screen flex justify-center items-center ">
             <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -14,6 +16,10 @@ function Result() {
                         id="username"
                         type="text"
                         placeholder="Roll Number"
+                        value={rollno}
+                        onChange={(e) => {
+                            setRollno(e.target.value);
+                        }}
                     />
                 </div>
                 <div className="mb-6">
@@ -25,6 +31,10 @@ function Result() {
                         id="password"
                         type="text"
                         placeholder="******************"
+                        value={mobileno}
+                        onChange={(e) => {
+                            setMobileno(e.target.value);
+                        }}
                     />
                 </div>
                 <div className="flex items-center justify-between">
@@ -32,7 +42,7 @@ function Result() {
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
                     >
-                        <Link to="result/abhay/first">View Result</Link>
+                        <Link to={`result/${rollno}/${mobileno}`}>View Result</Link>
                     </button>
                 </div>
             </form>

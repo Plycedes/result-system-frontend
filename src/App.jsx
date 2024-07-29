@@ -7,7 +7,10 @@ import { AdminProvider } from "./context/AdminContext";
 function App() {
     const [admin, setAdmin] = useState({});
 
-    const createAdmin = (admin) => setAdmin(admin);
+    const createAdmin = (admin) => {
+        console.log(admin.username);
+        setAdmin(admin);
+    };
 
     return (
         <AdminProvider value={{ admin, createAdmin }}>

@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAdmin } from "../context/AdminContext";
+import axios from "axios";
 
 export default function Header() {
+    const { admin, createAdmin } = useAdmin();
+    useEffect(() => {}, [admin]);
+
+    const myConfig = {
+        header: {
+            Authorization: "Bearer " + admin.access_token,
+        },
+    };
+
+    const logoutAdmin = async () => {
+        try {
+            const response = await axios.post("/api/v1/admin/logout", myConfig);
+            console.log(response);
+            createAdmin({});
+        } catch (error) {
+            if (axios.isCancel(error)) {
+                return;
+            }
+            console.log(error);
+        }
+    };
     return (
         <header className="shadow sticky z-50 top-0">
             <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
@@ -20,12 +43,23 @@ export default function Header() {
                         >
                             Results
                         </Link>
-                        <Link
-                            to="admin"
-                            className="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-                        >
-                            Admin
-                        </Link>
+                        {!admin && (
+                            <Link
+                                to="admin"
+                                className="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                            >
+                                Admin
+                            </Link>
+                        )}
+                        {admin && (
+                            <button
+                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="button"
+                                onClick={logoutAdmin}
+                            >
+                                Log Out
+                            </button>
+                        )}
                     </div>
                 </div>
             </nav>

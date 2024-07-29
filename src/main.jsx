@@ -15,7 +15,6 @@ const router = createBrowserRouter(
         <Route path="/" element={<App />}>
             <Route path="" element={<Result />} />
             <Route path="admin" element={<Admin />} />
-            <Route path="admin/admin-panel/:username/:password" element={<AdminPanel />} />
             <Route path="result/:rollno/:mobileno" element={<ResultTab />} />
         </Route>
     )

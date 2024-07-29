@@ -8,13 +8,14 @@ import {
     RouterProvider,
     Route,
 } from "react-router-dom";
-import { Result, Admin, ResultTab } from "./components/index.js";
+import { Result, Admin, ResultTab, AdminPanel } from "./components/index.js";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
             <Route path="" element={<Result />} />
             <Route path="admin" element={<Admin />} />
+            <Route path="admin/admin-panel/:username/:password" element={<AdminPanel />} />
             <Route path="result/:rollno/:mobileno" element={<ResultTab />} />
         </Route>
     )

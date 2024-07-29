@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Admin() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     return (
         <div className="h-screen flex justify-center items-center ">
             <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -13,6 +16,8 @@ function Admin() {
                         id="username"
                         type="text"
                         placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div className="mb-6">
@@ -24,6 +29,8 @@ function Admin() {
                         id="password"
                         type="password"
                         placeholder="******************"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div className="flex items-center justify-between">
@@ -31,7 +38,7 @@ function Admin() {
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
                     >
-                        Sign In
+                        <Link to={`admin-panel/${username}/${password}`}>Sign In</Link>
                     </button>
                 </div>
             </form>

@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAdmin } from "../context/AdminContext";
+import axios from "axios";
 
 function AdminPanel() {
+    const { admin } = useAdmin();
+
     const [resultForm, setResultForm] = useState(true);
     const [passwordForm, setPasswordForm] = useState(false);
 
@@ -13,11 +17,56 @@ function AdminPanel() {
     const [chemistry, setChemistry] = useState("");
     const [biology, setBiology] = useState("");
     const [english, setEnglish] = useState("");
+
+    const [message, setMessage] = useState("");
+
+    const config = {
+        header: {
+            Authentication: admin.refreshToken,
+        },
+    };
+
+    const addResult = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                "api/v1/admin/setresult",
+                {
+                    name: name,
+                    rollno: rollno,
+                    mobileno: mobileno,
+                    math: math,
+                    physics: physics,
+                    chemistry: chemistry,
+                    biology: biology,
+                    english: english,
+                },
+                config
+            );
+            console.log(response.data);
+            setName("");
+            setRollno("");
+            setMobileno("");
+            setMath("");
+            setPhysics("");
+            setChemistry("");
+            setBiology("");
+            setEnglish("");
+        } catch (error) {
+            if (axios.isCancel(error)) {
+                return;
+            }
+            console.log(error);
+        }
+    };
     return (
         <>
             {resultForm && !passwordForm && (
                 <div className="h-screen flex justify-center items-center mt-20 mb-20 ">
-                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit="">
+                    <form
+                        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                        onSubmit={addResult}
+                    >
                         <div class="mb-4">
                             <label
                                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -155,7 +204,7 @@ function AdminPanel() {
                             </button>
                             <button
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="submit"
+                                type="button"
                             >
                                 Change Password
                             </button>

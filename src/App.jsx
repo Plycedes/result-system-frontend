@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Header } from "./components";
 import { Outlet } from "react-router-dom";
-import Footer from "./components/Footer";
 import { AdminProvider } from "./context/AdminContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
     const [admin, setAdmin] = useState({ username: "", access_token: "" });
@@ -15,6 +15,7 @@ function App() {
         <AdminProvider value={{ admin, createAdmin }}>
             <Header />
             <Outlet />
+            <ToastContainer />
         </AdminProvider>
     );
 }

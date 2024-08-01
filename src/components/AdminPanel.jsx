@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useAdmin } from "../context/AdminContext";
+import { toast } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 import axios from "axios";
 
 function AdminPanel() {
@@ -19,6 +20,7 @@ function AdminPanel() {
     const [english, setEnglish] = useState("");
 
     const [message, setMessage] = useState("");
+    const [showMessage, setShowMessage] = useState(false);
 
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -55,6 +57,17 @@ function AdminPanel() {
             setChemistry("");
             setBiology("");
             setEnglish("");
+
+            toast.success(response.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         } catch (error) {
             if (axios.isCancel(error)) {
                 return;
@@ -74,6 +87,17 @@ function AdminPanel() {
             console.log(response);
             setOldPassword("");
             setNewPassword("");
+
+            toast.success(response.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         } catch (error) {
             if (axios.isCancel(error)) {
                 return;
@@ -241,62 +265,64 @@ function AdminPanel() {
             )}
 
             {!resultForm && passwordForm && (
-                <div className="h-screen flex justify-center items-center ">
-                    <form
-                        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-                        onSubmit={changePassword}
-                    >
-                        <div className="mb-6">
-                            <label
-                                className="block text-gray-700 text-sm font-bold mb-2"
-                                for="oldpassword"
-                            >
-                                Old Password
-                            </label>
-                            <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                                id="oldpassword"
-                                type="password"
-                                placeholder="Old Password"
-                                value={oldPassword}
-                                onChange={(e) => setOldPassword(e.target.value)}
-                            />
-                        </div>
-                        <div className="mb-6">
-                            <label
-                                className="block text-gray-700 text-sm font-bold mb-2"
-                                for="newpassword"
-                            >
-                                New Password
-                            </label>
-                            <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                                id="newpassword"
-                                type="password"
-                                placeholder="New Password"
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                            />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <button
-                                className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="submit"
-                            >
-                                Submit
-                            </button>
-                            <button
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="button"
-                                onClick={() => {
-                                    setPasswordForm(false);
-                                    setResultForm(true);
-                                }}
-                            >
-                                Go Back
-                            </button>
-                        </div>
-                    </form>
+                <div>
+                    <div className="h-screen flex justify-center items-center ">
+                        <form
+                            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                            onSubmit={changePassword}
+                        >
+                            <div className="mb-6">
+                                <label
+                                    className="block text-gray-700 text-sm font-bold mb-2"
+                                    for="oldpassword"
+                                >
+                                    Old Password
+                                </label>
+                                <input
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="oldpassword"
+                                    type="password"
+                                    placeholder="Old Password"
+                                    value={oldPassword}
+                                    onChange={(e) => setOldPassword(e.target.value)}
+                                />
+                            </div>
+                            <div className="mb-6">
+                                <label
+                                    className="block text-gray-700 text-sm font-bold mb-2"
+                                    for="newpassword"
+                                >
+                                    New Password
+                                </label>
+                                <input
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="newpassword"
+                                    type="password"
+                                    placeholder="New Password"
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                />
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <button
+                                    className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    type="submit"
+                                >
+                                    Submit
+                                </button>
+                                <button
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    type="button"
+                                    onClick={() => {
+                                        setPasswordForm(false);
+                                        setResultForm(true);
+                                    }}
+                                >
+                                    Go Back
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             )}
         </>
@@ -304,3 +330,4 @@ function AdminPanel() {
 }
 
 export default AdminPanel;
+//abhay

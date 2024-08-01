@@ -8,8 +8,8 @@ function Admin() {
     useEffect(() => {}, [admin]);
     return (
         <div>
-            {!admin && <Login />}
-            {admin && <AdminPanel />}
+            {!admin.username && <Login />}
+            {admin.username && <AdminPanel />}
         </div>
     );
 }

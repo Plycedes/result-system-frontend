@@ -5,10 +5,9 @@ import Footer from "./components/Footer";
 import { AdminProvider } from "./context/AdminContext";
 
 function App() {
-    const [admin, setAdmin] = useState({});
+    const [admin, setAdmin] = useState({ username: "", access_token: "" });
 
     const createAdmin = (admin) => {
-        console.log(admin.username);
         setAdmin(admin);
     };
 

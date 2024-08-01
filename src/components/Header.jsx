@@ -9,15 +9,16 @@ export default function Header() {
 
     const myConfig = {
         header: {
-            Authorization: "Bearer " + admin.access_token,
+            Authorization: admin.refreshToken,
         },
     };
 
     const logoutAdmin = async () => {
         try {
+            console.log(admin.refreshToken);
+            createAdmin({ username: "", access_token: "" });
             const response = await axios.post("/api/v1/admin/logout", myConfig);
             console.log(response);
-            createAdmin({});
         } catch (error) {
             if (axios.isCancel(error)) {
                 return;
@@ -43,7 +44,7 @@ export default function Header() {
                         >
                             Results
                         </Link>
-                        {!admin && (
+                        {!admin.username && (
                             <Link
                                 to="admin"
                                 className="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
@@ -51,7 +52,7 @@ export default function Header() {
                                 Admin
                             </Link>
                         )}
-                        {admin && (
+                        {admin.username && (
                             <button
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 type="button"

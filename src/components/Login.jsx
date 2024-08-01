@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAdmin } from "../context/AdminContext";
 import axios from "axios";
+import "react-toastify/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -22,7 +24,16 @@ function Login() {
             if (axios.isCancel(error)) {
                 return;
             }
-            console.log(error);
+            toast.error(error.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
     return (

@@ -19,9 +19,6 @@ function AdminPanel() {
     const [biology, setBiology] = useState("");
     const [english, setEnglish] = useState("");
 
-    const [message, setMessage] = useState("");
-    const [showMessage, setShowMessage] = useState(false);
-
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
@@ -72,7 +69,16 @@ function AdminPanel() {
             if (axios.isCancel(error)) {
                 return;
             }
-            console.log(error);
+            toast.error(error.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
 
@@ -102,7 +108,16 @@ function AdminPanel() {
             if (axios.isCancel(error)) {
                 return;
             }
-            console.log(error);
+            toast.error(error.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
 

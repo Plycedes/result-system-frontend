@@ -45,89 +45,89 @@ function ResultTab() {
                     <div className="mb-5">
                         <h2 className="text-3xl text-blue-500">Student Result</h2>
                     </div>
-                    <div class="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-                        <table class="w-full text-left table-auto min-w-max">
+                    <div className="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+                        <table className="w-full text-left table-auto min-w-max">
                             <tbody>
                                 <tr>
-                                    <td class="p-4 border-b border-r border-blue-gray-50 bg-blue-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-r border-blue-gray-50 bg-blue-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             Name
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-blue-gray-50 bg-blue-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-blue-gray-50 bg-blue-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {result.name}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-b border-r border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-r border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             Math
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {result.math}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-b border-r border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-r border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             Physics
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {result.physics}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-b border-r border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-r border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             Chemistry
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {result.chemistry}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-b border-r border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-r border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             English
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {result.english}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-b border-r border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-r border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             Biology
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-b border-blue-gray-50">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {result.biology}
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-4 border-r">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 border-r">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             Total
                                         </p>
                                     </td>
-                                    <td class="p-4 ">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    <td className="p-4 ">
+                                        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {result.math +
                                                 result.physics +
                                                 result.chemistry +

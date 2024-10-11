@@ -45,7 +45,7 @@ function AdminPanel() {
                 },
                 config
             );
-            console.log(response.data);
+            //console.log(response.data);
             setName("");
             setRollno("");
             setMobileno("");
@@ -90,7 +90,7 @@ function AdminPanel() {
                 { oldPassword, newPassword },
                 config
             );
-            console.log(response);
+            //console.log(response);
             setOldPassword("");
             setNewPassword("");
 

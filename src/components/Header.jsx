@@ -15,10 +15,10 @@ export default function Header() {
 
     const logoutAdmin = async () => {
         try {
-            console.log(admin.refreshToken);
+            //console.log(admin.refreshToken);
             createAdmin({ username: "", access_token: "" });
             const response = await axios.post("/api/v1/admin/logout", myConfig);
-            console.log(response);
+            //console.log(response);
         } catch (error) {
             if (axios.isCancel(error)) {
                 return;

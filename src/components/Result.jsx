@@ -7,8 +7,11 @@ function Result() {
     return (
         <div className="h-screen flex justify-center items-center ">
             <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <div class="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+                <div className="mb-4">
+                    <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="username"
+                    >
                         Roll Number
                     </label>
                     <input
@@ -23,7 +26,10 @@ function Result() {
                     />
                 </div>
                 <div className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="password"
+                    >
                         Mobile Number
                     </label>
                     <input

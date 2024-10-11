@@ -18,7 +18,7 @@ function Login() {
                 password: password,
             });
             const admin = response.data.data;
-            console.log(admin.user);
+            //console.log(admin.user);
             createAdmin(admin.user);
         } catch (error) {
             if (axios.isCancel(error)) {
